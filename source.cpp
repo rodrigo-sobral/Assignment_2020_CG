@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <windows.h>
 #include <GL/Glut.h>
 
 #define BLUE     0.0, 0.0, 1.0, 1.0
@@ -75,6 +76,10 @@ static GLfloat cores[] = {	1, 1, 1,
 							0.5, 0.5, 1,
 							0.5, 0.5, 0.5,
 							1, 0.5, 0.5 };
+
+static GLuint front[] = { 0, 1, 2, 3 };
+static GLuint right[] = { 4, 5, 6, 7 };
+static GLuint up[] =	{ 8, 9, 10, 11 };
 
 
 void initialize(void) {
@@ -198,9 +203,6 @@ void autoOpeningUpdater() {
 //	====================================================================
 
 void drawScene() {
-	static GLuint front[] = { 0, 1, 2, 3 };
-	static GLuint right[] = { 4, 5, 6, 7 };
-	static GLuint up[] =	{ 8, 9, 10, 11 };
 
 	autoOpeningUpdater();
 

@@ -114,7 +114,7 @@ RgbImage imag;
 
 //	MALHA
 bool activated_malha = false;
-GLfloat malha = 128;
+GLfloat malha = 16;
 
 //	AMBIENT LIGHT VARS
 GLfloat day_light = 1;
@@ -293,7 +293,7 @@ void drawSentence(char* string, GLfloat x, GLfloat y) {
 }
 void draw_Informacao() {
 	if (showed_info) {
-		sprintf_s(text, TEXT_SIZE, "Modo Informação [Space]");
+		sprintf_s(text, TEXT_SIZE, "Modo Informacao [Space]");
 		drawSentence(text, -15, -40);
 
 		if (activated_malha) sprintf_s(text, TEXT_SIZE, "Malha: Ativada - Tamanho: %.0f", malha);
@@ -349,28 +349,31 @@ void draw_Informacao() {
 		drawSentence(text, -15,  0);
 	}
 }
-void drawMalha(double yC) {
-	GLfloat loop = (yC * 2) / malha;
+void drawMalha(int yC) {
+	float loop = malha / 2;
+	glNormal3f(0, 1, 0);
 	glPushMatrix();
-		glNormal3f(0, 0, 1);
+		glTranslated(-15, -5.05, 10);
+		glRotated(90, 0, 1, 0);
+		glScaled(2, 0, 1.5);
 		glBegin(GL_QUADS);
-		for (GLfloat i = 0; i < malha; i++) {
-			for (GLfloat j = 0; j < malha; j++) {
-				glTexCoord2d(0, 0);
-				glVertex3d(-yC - 5 +j * loop, -5.15, -yC + i * loop);
-				glTexCoord2d(1, 0);
-				glVertex3d(-yC - 5 + j * loop + loop, -5.15, -yC + i * loop);
-				glTexCoord2d(1, 1);
-				glVertex3d(-yC + 5 + j * loop + loop, -5.15, -yC + i * loop + loop);
-				glTexCoord2d(0, 1);
-				glVertex3d(-yC + 5 + j * loop, -5.15, -yC + i * loop + loop);
+		for (float i = 0; i < malha * yC; i++) {
+			for (float j = 0; j < malha * yC / 2; j++) {
+				glTexCoord2f(j/malha    , i/malha);
+				glVertex3d(j/loop,     0, i/loop);
+				glTexCoord2f((j+1)/malha, i/malha);
+				glVertex3d((j+1)/loop   , 0, i/loop);
+				glTexCoord2f((j+1)/malha, (i+1)/malha);
+				glVertex3d((j+1)/loop, 0, (i+1)/loop);
+				glTexCoord2f(j/malha    , (i+1)/malha);
+				glVertex3d(j/loop,     0, (i+1)/loop);
 			}
 		}
-		glEnd();
+	glEnd();
 	glPopMatrix();
 }
 void drawCarpet() {
-	double yC = 10;
+	int yC = 10;
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, textures[2]);
 	initMaterials(activated_material);
@@ -381,13 +384,13 @@ void drawCarpet() {
 		glPushMatrix();
 			glBegin(GL_QUADS);
 			glTexCoord2d(0, 0);
-			glVertex3d(-15, -5.15, -yC);
+			glVertex3d(-15, -5.05, -yC);
 			glTexCoord2d(1, 0);
-			glVertex3d(-15, -5.15, yC);
+			glVertex3d(-15, -5.05, yC);
 			glTexCoord2d(1, 1);
-			glVertex3d(15, -5.15, yC);
+			glVertex3d(15, -5.05, yC);
 			glTexCoord2d(0, 1);
-			glVertex3d(15, -5.15, -yC);
+			glVertex3d(15, -5.05, -yC);
 			glEnd();
 		glPopMatrix();
 	}
@@ -579,7 +582,7 @@ void keyboard(unsigned char key, int x, int y) {
 	else if (key == 'm' || key == 'M') activated_material = (activated_material + 1) % 18;
 	else if (key == 'i' || key == 'I') { specular_coeficient += 0.2; if (specular_coeficient > 1) specular_coeficient = 0; }
 	else if (key == 'k' || key == 'K') transparent = !transparent;
-	else if (key == 'p' || key == 'P') { if (malha != 2048) malha *= 2; }
+	else if (key == 'p' || key == 'P') { if (malha != 512) malha *= 2; }
 	else if (key == 'o' || key == 'O') { if (malha != 1) malha /= 2; }
 	else if (key == 'j' || key == 'J') activated_malha = !activated_malha;
 

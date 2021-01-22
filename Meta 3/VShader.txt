@@ -1,0 +1,13 @@
+varying vec3  vNormal;
+uniform float scale;
+
+void main(void) {
+    vNormal = gl_Normal ;
+    gl_TexCoord[0] = gl_MultiTexCoord0;
+    vec4 pos = gl_Vertex;
+    pos.x *= scale;
+    pos.y *= scale;
+    pos.z *= scale;
+
+    gl_Position = gl_ModelViewProjectionMatrix * pos;
+}

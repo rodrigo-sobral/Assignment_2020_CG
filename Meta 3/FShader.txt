@@ -1,0 +1,15 @@
+uniform sampler2D textLoc;
+uniform vec3 Direcao;
+varying vec3 vNormal;
+uniform vec4 cor;
+float intensity;
+
+void main(void) {
+    vec3 nNormal= normalize(vNormal) ;
+    vec4 textura = texture2D(textLoc,  gl_TexCoord[0].st);
+
+    intensity = max( dot( normalize(nNormal), normalize(Direcao)), 0.0);
+    if (intensity==0) intensity = 0.05;
+
+    gl_FragColor= (intensity*cor)*0.5 + (textura)*0.5;
+}

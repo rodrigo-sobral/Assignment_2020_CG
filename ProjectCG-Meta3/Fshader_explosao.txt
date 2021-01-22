@@ -1,8 +1,0 @@
-varying float xpos;
-varying float ypos;
-varying float zpos;
-varying vec3  vNormal;
-void main(void)
-{	
-	gl_FragColor=vec4( xpos, ypos, zpos, 1.0);	
-}

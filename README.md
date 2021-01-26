@@ -1,4 +1,4 @@
-# Project Graphical Computation
+# Graphical Computation Project
 
 ___
 

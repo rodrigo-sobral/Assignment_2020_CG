@@ -6,20 +6,20 @@
 #include <errno.h>
 #include <GL\glew.h>
 #include <GL\freeGlut.h>
-#include "../RgbImage.h"
+#include "../Libraries/RgbImage.h"
 
 #pragma comment(lib,"glew32.lib")
 #pragma comment(lib,"glu32.lib")
 #pragma comment(lib,"opengl32.lib")
 
 //	PATHS
-char filenameV[] = "C:/Users/sobra/OneDrive/Documentos/GitHub/Project_CG/ProjectCG-Meta3/Vshader.txt";
-char filenameF[] = "C:/Users/sobra/OneDrive/Documentos/GitHub/Project_CG/ProjectCG-Meta3/Fshader.txt";
-char texture_path[] = "C:/Users/sobra/OneDrive/Documentos/GitHub/Project_CG/ProjectCG-Meta3/steel.bmp";
+char filenameV[] = "C://Users//sobra//OneDrive//Documentos//GitHub//Project_CG//Meta 3//Vshader.txt";
+char filenameF[] = "C://Users//sobra//OneDrive//Documentos//GitHub//Project_CG//Meta 3//Fshader.txt";
+char texture_path[] = "C://Users//sobra//OneDrive//Documentos//GitHub//Project_CG//Meta 3//steel.bmp";
 
 //	CUBE VARS
 int wScreen = 600, hScreen = 500, uniTime, uniOp, uniDir, uniCor, uniScale;
-float cor[] = { 0, 0, 1, 1 }, Direcao[] = { 1, 0, 0 };
+float cor[] = { 0, 0, 1, 0 }, Direcao[] = { 1, 0, 0 };
 float opcao = -45, dim = 3, angle = 0, scale = 0.1, increment = 0.03;
 bool stop = false, transparent = false;
 //	TEXTURE VARS
@@ -219,14 +219,19 @@ void draw(void) {
 	glUniform1f(uniScale, scale);
 
 	Direcao[0] = cos(3.14 * opcao / 180.0);
-	Direcao[1] = 1/tan(3.14 * opcao / 180.0);
+	Direcao[1] = cos(3.14 * opcao / 180.0);
 	Direcao[2] = sin(3.14 * opcao / 180.0);
-
+	
 	if (transparent) { glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); }
 	if (!stop) {
 		angle = angle + 0.7;
 		scale += increment;
 		if (scale > 1.5 || scale < 0.1) increment = -increment;
+	}
+	if (cor[3] == 1) {
+		opcao += 1;
+		if (opcao == 5000) opcao = 0;
+	} else {
 		opcao += 5;
 		if (opcao == 5000) opcao = 0;
 	}
@@ -234,6 +239,7 @@ void draw(void) {
 	glRotatef(45, 0, 0, 1);
 	glRotatef(45, 1, 0, 0);
 	drawCube();	
+	//glutSolidTeapot(5);
 	if (transparent) glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
 
@@ -244,13 +250,17 @@ void keyboard(unsigned char key, int x, int y)	 {
 	if (key == 'r' || key == 'R') {
 		if (cor[0] == 1) cor[0] = 0;
 		else cor[0] += 0.2;
-	} else if (key == 'g' || key == 'G') {
+	}
+	else if (key == 'g' || key == 'G') {
 		if (cor[1] == 1) cor[1] = 0;
 		else cor[1] += 0.2;
-	} else if (key == 'b' || key == 'B') {
+	}
+	else if (key == 'b' || key == 'B') {
 		if (cor[2] == 1) cor[2] = 0;
 		else cor[2] += 0.2;
 	}
+	else if (key == '1') cor[3] = 0;
+	else if (key == '2') cor[3] = 1;
 	else if (key == 's' || key == 'S') stop = !stop;
 	else if (key == 'k' || key == 'K') transparent = !transparent;
 	else if (key == 27) exit(0);

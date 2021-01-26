@@ -3,7 +3,8 @@
 #include <math.h>
 #include <windows.h>
 #include <GL/Glut.h>
-#include "RgbImage.h"
+#include "../Libraries/RgbImage.h"
+#include "../Libraries/Materials.h"
 
 #define GREEN    0.0, 1.0, 0.0, 1.0
 #define ORANGE   1.0, 0.5, 0.1, 1.0
@@ -15,10 +16,10 @@
 #define PONTUAL 1
 #define DIRECIONAL 0
 
-#define DOOR_TEXTURE_PATH "C:\\Users\\sobra\\OneDrive\\Documentos\\GitHub\\Project_CG\\door_texture.bmp"
-#define WALL_TEXTURE_PATH "C:\\Users\\sobra\\OneDrive\\Documentos\\GitHub\\Project_CG\\wall_texture.bmp"
-#define GROUND_TEXTURE_PATH "C:\\Users\\sobra\\OneDrive\\Documentos\\GitHub\\Project_CG\\ground.bmp"
-#define SKYBOX_TEXTURE_PATH "C:\\Users\\sobra\\OneDrive\\Documentos\\GitHub\\Project_CG\\city.bmp"
+#define DOOR_TEXTURE_PATH "C:\\Users\\sobra\\OneDrive\\Documentos\\GitHub\\Project_CG\\Meta 1-2\\door_texture.bmp"
+#define WALL_TEXTURE_PATH "C:\\Users\\sobra\\OneDrive\\Documentos\\GitHub\\Project_CG\\Meta 1-2\\wall_texture.bmp"
+#define GROUND_TEXTURE_PATH "C:\\Users\\sobra\\OneDrive\\Documentos\\GitHub\\Project_CG\\Meta 1-2\\ground.bmp"
+#define SKYBOX_TEXTURE_PATH "C:\\Users\\sobra\\OneDrive\\Documentos\\GitHub\\Project_CG\\Meta 1-2\\city.bmp"
 
 void initMaterials(int activated_material);
 

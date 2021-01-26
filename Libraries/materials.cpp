@@ -1,5 +1,5 @@
 #include <GL\freeGlut.h>
-#include "materiais.h"
+#include "materials.h"
 
 void initMaterials(int material) {
 

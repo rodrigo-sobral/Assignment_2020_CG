@@ -122,6 +122,18 @@ ___
 
 ___
 
+## **Contributors** :sparkles:
+
+<html><i><b> Licenciatura em Engenharia Informática - Universidade de Coimbra<br>
+Computação Gráfica - 2020/2021 <br>
+Coimbra, 23 de janeiro de 2021
+</b></i></html>
+
+:mortar_board:
+***[Rodrigo Fernando Henriques Sobral](https://github.com/RodrigoSobral2000)***
+
+___
+
 ## License :link:
 Have a look at the [license file](LICENSE) for details
 ___

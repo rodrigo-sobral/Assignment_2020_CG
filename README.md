@@ -1,4 +1,4 @@
-# Graphical Computation Project
+# Graphical Computation Assignment
 
 ___
 

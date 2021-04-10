@@ -2,7 +2,7 @@
 
 ___
 
-## Technologies Used :computer:
+## Used Technologies :computer:
 
 1) **Microsoft Visual Studio 2019**
 

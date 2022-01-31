@@ -4,17 +4,15 @@ ___
 
 ## Used Technologies :computer:
 
-1) **Microsoft Visual Studio 2019**
+<img src="https://img.icons8.com/color/48/000000/c-plus-plus-logo.png"/> <img width="50" height="50" src="https://github.com/devicons/devicon/blob/master/icons/opengl/opengl-original.svg"/> <img src="https://img.icons8.com/color/48/000000/visual-studio.png"/>
 
-2) **OpenGL API (C++ language)**
+- **FreeGlut/Glut Libraries**
 
-3) **FreeGlut/Glut Libraries**
-
-4) **Header Files stored in _Libraries_ folder**
+- **Header Files stored in _Libraries_ folder**
 
 ___
 
-## To Do :memo:
+## Plan :memo:
 
 This project was subdivided in two different and independent steps.
 
@@ -48,7 +46,7 @@ ___
 ## Step :one: - *Futuristic Door*
 ![Screenshot1](screenshot1.png)
 
-### Done :dart:
+### About 📋
 
 - `Objects Building`: 
     - 2 independent blocks acting like components of the door
@@ -98,7 +96,7 @@ ___
 ## Step :two: - *Windows 2000*
 ![Screenshot2](screenshot2.png)
 
-### Done :dart:
+### About 📋
 
 - `Objects Building`
     - A inclined cube, rotated 45ª by *X* and *Z* referentials
